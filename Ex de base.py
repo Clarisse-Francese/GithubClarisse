@@ -94,6 +94,29 @@ for i in range (N) :
 for i in range (N) :
     if T[i] > max2 and T[i] < max1 :
         max2 = T[i]
-print("Le plus grand élément est :",max1,"et le deuxième plus grand est",max2)
+print("Le plus grand élément est ",max1,"et le deuxième plus grand est",max2)
 
-# Ex 12
+# Ex 12 : Un gardien de phare va aux toilettes cinq fois par jour. Or les WC sont au rez-de-chaussée… Écrire une procédure (donc sans return) hauteurParcourue qui reçoit deux paramètres, le nombre de marches du phare et la hauteur de chaque marche (en cm), et qui affiche : Pour x marches de y cm, il parcourt z.zz m par semaine.
+
+n = int(input("Combien il y a-t-il de marches ? "))
+h = int(input("Quelle est la hauteur de chaque marche en cm ? "))
+
+def hauteurParcourue(n,h) :
+    print("Pour",n,"marches de",h,"cm, il parcourt", (n*h*2*5*7)/100,"m dans la semaine")
+
+hauteurParcourue(n,h)
+
+# Ex 13 : Dans la série "Kaamelott" d'Alexandre Astier, le "cul de chouette" est le jeu favori du tavernier et du chevalier Karadoc. Le but présumé de ce jeu est de jeter des dés en tentant d'atteindre un certain total par jet. Le but de cet exercice est d'écrire une fonction qui, pour une valeur donnée, renvoie toutes les solutions de 3 dés (dés classiques allant de 1 à 6) pouvant donner cette valeur. Attention, les solutions doivent être uniques. Si la solution (1, 2, 3) convient pour la valeur 6 alors la solution (2, 3, 1) ne peut plus convenir (les dés sont interchangeables). Aide: renvoyer plusieurs valeurs consiste à créer un tableau et à le remplir durant la recherche puis au final retourner le tableau.
+
+def cul_de_chouette (valeur) :
+    res = list()
+    for i in range (1,7):
+        for j in range (i,7):
+            for k in range (j,7):
+                if k+i+j == valeur :
+                    res.append((i,j,k))
+                    
+    return res
+
+n = int(input("Quelle est la valeur à atteindre ? "))
+print("Les combinaisons de dés possibles pour faire", n,"sont",cul_de_chouette(7))
